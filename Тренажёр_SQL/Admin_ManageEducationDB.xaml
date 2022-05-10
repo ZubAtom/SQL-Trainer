@@ -1,0 +1,38 @@
+﻿<Page x:Class="Тренажёр_SQL.Admin_ManageEducationDB"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Тренажёр_SQL"
+      mc:Ignorable="d" 
+      d:DesignHeight="525" d:DesignWidth="975"
+      Title="Admin_ManageEducationDB">
+
+    <Grid Background="AntiqueWhite">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="200" MaxWidth="400"/>
+            <ColumnDefinition MinWidth="300" MaxWidth="600"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition MinHeight="100" MaxHeight="200"/>
+            <RowDefinition MinHeight="50" MaxHeight="200"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <TreeView x:Name="Tv" Grid.Row="2" Grid.Column="0" SelectedItemChanged="Tv_SelectedItemChanged" >
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Items}" >
+                    <TextBlock Text="{Binding Title}"/>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+        <DataGrid x:Name="Dg" Grid.Row="2" Grid.Column="1"/>
+        <TextBox x:Name="Tb" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" AcceptsReturn="True" AcceptsTab="True" FontSize="20"/>
+        <Button Name="Back" Content=" Назад " Click="Back_Click" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Height="50" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" Background="AntiqueWhite" Foreground="CadetBlue" FontSize="20" FontWeight="Bold" BorderThickness="0"/>
+        <Button Name="Exit" Content=" Выход " Click="Exit_Click" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="2" Height="50" Width="100" VerticalAlignment="Top" HorizontalAlignment="Right" Background="AntiqueWhite" Foreground="CadetBlue" FontSize="20" FontWeight="Bold" BorderThickness="0"/>
+        <Button Name="Update" Content=" Обновить модель " Click="Update_Click" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Height="50" Width="200" VerticalAlignment="Bottom" HorizontalAlignment="Left" Background="AntiqueWhite" Foreground="CadetBlue" FontSize="20" FontWeight="Bold" BorderThickness="0"/>
+        <Button Name="Execute" Content=" Выполнить " Click="Execute_Click" Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2" Height="50" Width="150" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="AntiqueWhite" Foreground="CadetBlue" FontSize="20" FontWeight="Bold" BorderThickness="0"/>
+
+    </Grid>
+</Page>

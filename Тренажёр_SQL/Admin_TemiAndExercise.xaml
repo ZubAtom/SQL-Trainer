@@ -1,0 +1,70 @@
+﻿<Page x:Class="Тренажёр_SQL.Admin_TemiAndExercise"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Тренажёр_SQL"
+      mc:Ignorable="d" 
+      d:DesignHeight="525" d:DesignWidth="975"
+      Title="Admin_TemiAndExercise">
+
+    <Grid Background="AntiqueWhite">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition MinWidth="100" MaxWidth="200"/>
+            <ColumnDefinition MinWidth="150" MaxWidth="200"/>
+            <ColumnDefinition MinWidth="150" MaxWidth="200"/>
+            <ColumnDefinition MinWidth="150" MaxWidth="200"/>
+            <ColumnDefinition MinWidth="0" MaxWidth="100"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition MaxHeight="70" MinHeight="50"/>
+            <RowDefinition MinHeight="100" MaxHeight="250" />
+            <RowDefinition MinHeight="50" MaxHeight="70" />
+            <RowDefinition Height="50"/>
+            <RowDefinition MinHeight="50" MaxHeight="100"/>
+
+        </Grid.RowDefinitions>
+        <ComboBox x:Name="Lb" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Height="50" Width="150" VerticalContentAlignment="Center" FontSize="15" VerticalAlignment="Top" SelectionChanged="Lb_SelectionChanged"/>
+        <Button x:Name="BtClear" Click="BtClear_Click" Visibility="Hidden" VerticalContentAlignment="Center"  HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" Content="Очистить выбор" Grid.Row="2" Grid.Column="2" Height="50" Width="200" VerticalAlignment="Top"/>
+        <Button x:Name="BtAdd" Click="BtAdd_Click" Visibility="Hidden" VerticalContentAlignment="Center"  HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" Content="Добавить" Grid.Row="2" Grid.Column="3" Height="50" Width="150" VerticalAlignment="Top"/>
+        <Button x:Name="BtDel" Click="BtDel_Click" Visibility="Hidden" VerticalContentAlignment="Center"  HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" Content="Удалить" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Height="50" Width="150" VerticalAlignment="Top"/>
+
+        <ListView x:Name="Lvt"  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4" Width="300" HorizontalAlignment="Center" Visibility="Hidden" SelectionMode="Single" SelectionChanged="Lvt_SelectionChanged">
+            <ListView.View >
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Номер темы" Width="Auto" DisplayMemberBinding="{Binding Path=id}"/>
+                        <GridViewColumn Header="Название темы" Width="200" DisplayMemberBinding="{Binding Path=name}"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="Lve" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Center" Width="700" Visibility="Hidden" SelectionMode="Single" SelectionChanged="Lve_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Номер упражнения" Width="Auto" DisplayMemberBinding="{Binding Path=exer_id}"/>
+                        <GridViewColumn Header="Номер темы" Width="Auto" DisplayMemberBinding="{Binding Path=tema_id}"/>
+                        <GridViewColumn Header="Описание задания" Width="280" DisplayMemberBinding="{Binding Path=description}"/>
+                        <GridViewColumn Header="Проверочный запрос" Width="200" DisplayMemberBinding="{Binding Path=etal_query}"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Label x:Name="Lbt" Content="Название темы " Grid.Row="5" Grid.Column="2" Height="50" Width="150" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="Hidden"/>
+        <TextBox x:Name="Tbt" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="2"  Height="50" MinWidth="200" MaxWidth="400" FontSize="15" VerticalContentAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="Hidden" TextChanged="Tbt_TextChanged"/>
+
+        <Label x:Name="Lbe1" Content=" Номер темы " Grid.Row="4" Grid.Column="1" Height="50" Width="150" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="Hidden"/>
+        <ComboBox x:Name="Cbe1" Grid.Row="4" Grid.Column="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15" Height="50" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden" SelectionChanged="Cbe1_SelectionChanged"/>
+        <Label x:Name="Lbe2" Content="Описание задания" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Height="50" Width="300" FontSize="20" VerticalAlignment="Top" Visibility="Hidden"/>
+        <TextBox x:Name="Tbe2" Grid.Row="6" Grid.Column="0" FontSize="20"  Height="400" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" Grid.ColumnSpan="3" VerticalAlignment="Top" Visibility="Hidden" TextChanged="Tbe2_TextChanged"/>
+        <Label x:Name="Lbe3" Content="Проверочный запрос" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="3" Height="50" HorizontalAlignment="Center" Width="300" FontSize="20" Visibility="Hidden"/>
+        <TextBox x:Name="Tbe3" Grid.Row="5" Grid.RowSpan="2" FontSize="20" Height="300" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" Grid.Column="3"  Grid.ColumnSpan="3"  VerticalAlignment="Top" Visibility="Hidden" TextChanged="Tbe3_TextChanged"/>
+        <Button Name="Back" Content=" Назад " Click="Back_Click" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Height="50" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" Background="AntiqueWhite" Foreground="CadetBlue" FontSize="20" FontWeight="Bold" BorderThickness="0"/>
+        <Button Name="Exit" Content=" Выход " Click="Exit_Click" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="2" Height="50" Width="100" VerticalAlignment="Top" HorizontalAlignment="Right" Background="AntiqueWhite" Foreground="CadetBlue" FontSize="20" FontWeight="Bold" BorderThickness="0"/>
+    </Grid>
+</Page>
